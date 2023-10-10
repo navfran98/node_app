@@ -4,9 +4,13 @@ const path = require('path');
 const {logger} = require('./middleware/logger');
 const errorHandler = require('./middleware/errorHandler');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
+const corsOptions = require('./config/corsOptions');
 const PORT = process.env.PORT || 3000;
 
 app.use(logger);
+
+app.use(cors(corsOptions));
 
 // let the app receive and parse json data
 app.use(express.json());
